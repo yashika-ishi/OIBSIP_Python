@@ -15,19 +15,19 @@ class BMI_Calculator:
         self.bmi_result = tk.StringVar()
 
         # Create user interface elements
-        tk.Label(master, text="Weight (kg):").grid(row=0, column=0)
-        tk.Label(master, text="Height (m):").grid(row=1, column=0)
-        tk.Entry(master, textvariable=self.weight).grid(row=0, column=1)
-        tk.Entry(master, textvariable=self.height).grid(row=1, column=1)
+        tk.Label(master, text="Weight (kg):").grid(row=0, column=0, padx=10, pady=10)
+        tk.Label(master, text="Height (m):").grid(row=1, column=0, padx=10, pady=10)
+        tk.Entry(master, textvariable=self.weight).grid(row=0, column=1, padx=10, pady=10)
+        tk.Entry(master, textvariable=self.height).grid(row=1, column=1, padx=10, pady=10)
         tk.Button(master, text="Calculate BMI", command=self.calculate_bmi).grid(row=2, columnspan=2)
 
         # Display BMI result
-        tk.Label(master, text="BMI Result:").grid(row=3, column=0)
-        tk.Label(master, textvariable=self.bmi_result).grid(row=3, column=1)
+        tk.Label(master, text="BMI Result:").grid(row=3, column=0, padx=10, pady=10)
+        tk.Label(master, textvariable=self.bmi_result).grid(row=3, column=1, padx=10, pady=10)
 
         # Buttons for data storage and analysis
-        tk.Button(master, text="Save Data", command=self.save_data).grid(row=4, column=0)
-        tk.Button(master, text="View History", command=self.view_history).grid(row=4, column=1)
+        tk.Button(master, text="Save Data", command=self.save_data).grid(row=4, column=0, padx=10, pady=10)
+        tk.Button(master, text="View History", command=self.view_history).grid(row=4, column=1, padx=10, pady=10)
 
         # Initialize data storage
         self.data_file = "bmi_data.txt"
