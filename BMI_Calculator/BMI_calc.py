@@ -3,6 +3,7 @@ from tkinter import messagebox
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import os
+from ttkbootstrap import Style
 
 class BMI_Calculator:
     def __init__(self, master):
@@ -27,7 +28,7 @@ class BMI_Calculator:
 
         # Buttons for data storage and analysis
         tk.Button(master, text="Save Data", command=self.save_data).grid(row=4, column=0, padx=10, pady=10)
-        tk.Button(master, text="View History", command=self.view_history).grid(row=4, column=1, padx=10, pady=10)
+        tk.Button(master, text="Trends Analysis", command=self.analyze_trends).grid(row=4, column=1, padx=10, pady=10)
 
         # Initialize data storage
         self.data_file = "bmi_data.txt"
@@ -57,10 +58,10 @@ class BMI_Calculator:
             file.write(f"{weight},{height},{bmi}\n")
         messagebox.showinfo("Data Saved", "BMI data saved successfully.")
 
-    def view_history(self):
+    def analyze_trends(self):
         plt.figure(figsize=(10, 6))
         plt.plot(self.data["BMI"], marker='o', linestyle='-')
-        plt.title("BMI History")
+        plt.title("BMI Trends")
         plt.xlabel("Measurement")
         plt.ylabel("BMI")
         plt.grid(True)
@@ -77,7 +78,9 @@ class BMI_Calculator:
 def main():
     root = tk.Tk()
     app = BMI_Calculator(root)
+    style=Style(theme='superhero')
     root.mainloop()
 
 if __name__ == "__main__":
+    
     main()
