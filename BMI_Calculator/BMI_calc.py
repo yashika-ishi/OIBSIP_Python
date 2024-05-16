@@ -19,7 +19,7 @@ class BMI_Calculator:
         tk.Label(master, text="Height (m):").grid(row=1, column=0, padx=10, pady=10)
         tk.Entry(master, textvariable=self.weight).grid(row=0, column=1, padx=10, pady=10)
         tk.Entry(master, textvariable=self.height).grid(row=1, column=1, padx=10, pady=10)
-        tk.Button(master, text="Calculate BMI", command=self.calculate_bmi).grid(row=2, columnspan=2)
+        tk.Button(master, text="Calculate BMI", command=self.calculate_bmi).grid(row=2, columnspan=2, padx=10, pady=10)
 
         # Display BMI result
         tk.Label(master, text="BMI Result:").grid(row=3, column=0, padx=10, pady=10)
@@ -38,13 +38,13 @@ class BMI_Calculator:
         self.load_data()
 
     def calculate_bmi(self):
-        weight = self.weight.get()
-        height = self.height.get()
-        if weight <= 0 or height <= 0:
-            messagebox.showerror("Error", "Weight and height must be positive numbers.")
-            return
-        bmi = weight / (height ** 2)
-        self.bmi_result.set(f"{bmi:.2f}")
+        try:
+            weight = self.weight.get()
+            height = self.height.get()
+            bmi = weight / (height ** 2)
+            self.bmi_result.set(f"{bmi:.2f}")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed.{e}")
 
     def save_data(self):
         weight = self.weight.get()
