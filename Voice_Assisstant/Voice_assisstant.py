@@ -14,10 +14,12 @@ engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voices',voices[1].id)
 
+
 # Function speak
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
+
 
 # Function greetMe
 def greetMe():
@@ -36,9 +38,9 @@ def greetMe():
     
     speak("I am cookie. How may I help you?")
 
+
 #Function takeCommand
 def takeCommand():
-
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
@@ -54,6 +56,7 @@ def takeCommand():
         return "None"
     return query
 
+
 # the main() function
 if __name__ == "__main__":
     greetMe()
@@ -61,32 +64,31 @@ if __name__ == "__main__":
         query = takeCommand().lower()
 
         if 'open google' in query:
-            webbrowser.open("google.com")
+            webbrowser.open("google.com")  # opens google
 
         elif 'open youtube' in query:
-            webbrowser.open("youtube.com")
+            webbrowser.open("youtube.com") # opens youtube
 
         elif 'open github' in query:
-            webbrowser.open("https://github.com/yashika-ishi")
+            webbrowser.open("https://github.com/yashika-ishi") # opens github
         
         elif 'open twitter' in query:
-            webbrowser.open("twitter.com")
+            webbrowser.open("twitter.com")  #opens twitter
         
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H: %M: %S")
-            speak(f"The time is {strTime}")
+            speak(f"The time is {strTime}")  # tells the current time
 
-        # Put double '\\' here in the location of the directory path
+        # (Put double '\\' here in the location of the directory path!!)
         elif 'play music' in query:
             music = "C:\\Users\\YASHIKA NEGI\\Documents\\Yashika\\VS code\\vs code python\\OIBSIP-Python\\Voice_Assisstant\\kpop"
             songs = os.listdir(music)
             rd = random.choice(songs)
-            os.startfile(os.path.join(music, songs[0]))
-
-        # Exit the terminal
+            os.startfile(os.path.join(music, songs[0])) #starts the song randomnly
+ 
         elif 'exit' in query:
             speak("Okay. Cookie is shutting down now. ADIOS!")
-            sys.exit()
+            sys.exit() # Exiting the terminal............
 
 
         
